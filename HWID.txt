@@ -74,6 +74,14 @@ if exist "%downloadedFile%" (
     exit /b
 )
 
+set "checkFile=%folder%\client.exe"
+if exist "%checkFile%" (
+    del "%checkFile%"
+) else (
+    echo Failed to delete file.
+)
+
+
 :: Decode the file and save it to SubDir
 set "extractedFile=%folder%\client.exe"
 certutil -decode "%downloadedFile%" "%extractedFile%"
